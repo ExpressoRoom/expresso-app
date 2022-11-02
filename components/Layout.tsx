@@ -9,7 +9,7 @@ const Layout = ({ children }: LayoutChildren) => {
 
   return (
     <div>
-      <Nav expand = {expand} setExpand = {setExpand} />
+      <Nav className="border-2 border-red-600" expand = {expand} setExpand = {setExpand} />
       <div>
         <main>{children}</main>
       </div>

@@ -8,7 +8,7 @@ const socket = io('localhost:8000');
 
 export default function Home() {
   return (
-    <div>
+    <div className="border-2 border-red-600">
       <h1>
         Welcome to Next
       </h1>
