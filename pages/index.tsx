@@ -8,9 +8,9 @@ const socket = io('localhost:8000');
 
 export default function Home() {
   return (
-    <div className="border-2 border-red-600">
+    <div className="border-2 border-yellow-600 ml-1/6 h-screen">
       <h1>
-        Welcome to Next
+        Welcome to Expresso Room
       </h1>
     </div>
   )
