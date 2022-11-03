@@ -8,38 +8,10 @@ const socket = io('localhost:8000');
 
 export default function Home() {
   return (
-    <div className="container mx-auto">
-      <div className="border-2 border-sky-500">
-        Icon bar
-      </div>
-      <div>
-        homepage container
-        <h1>
-          Hi *username*
-        </h1>
-        <div>
-          left column
-          <div>
-            Social Feed box
-          </div>
-          <div>
-            current Projects box
-          </div>
-        </div>
-        <div>
-          right column
-          <div>
-            Calendar box
-          </div>
-          <div>
-            technical question box
-          </div>
-          <div>
-            call to action box
-          </div>
-        </div>
-      </div>
-
+    <div className="border-2 border-yellow-600 flex items-center justify-center text-3xl ml-1/6 h-screen">
+      <h1 className="text-center">
+        Welcome to Expresso Room
+      </h1>
     </div>
   )
 }
