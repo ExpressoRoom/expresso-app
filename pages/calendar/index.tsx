@@ -1,13 +1,9 @@
 import React from 'react';
-import FullCalendar from "@fullcalendar/react";
-// The import order DOES MATTER here. If you change it, you'll get an error!
-import interactionPlugin from "@fullcalendar/interaction";
-import timeGridPlugin from "@fullcalendar/timegrid";
 import CalendarComponent from '../../components/Calendar'
 
 export default function Home() {
   return (
-    <div>
+    <div className="absolute right-0 w-5/6 border-blue-400 border-2">
       <CalendarComponent />
     </div>
   )
