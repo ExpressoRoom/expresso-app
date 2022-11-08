@@ -4,42 +4,57 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import bootstrap5Plugin from "@fullcalendar/bootstrap5";
 import listPlugin from '@fullcalendar/list';
-import { useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
-const Calendar = ({  }) => {
+const Calendar = ({ userId }) => {
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    //api pull from db
+  }, []);
+
+  const handleClickDay = (info) => {
+    const { start, end } = info;
+    const eventNamePrompt = prompt("Enter, event name");
+    if (eventNamePrompt) {
+      setEvents([
+        ...events,
+        {
+          start,
+          end,
+          title: eventNamePrompt,
+          id: eventNamePrompt + Date.now(),
+        },
+      ]);
+    }
+  };
 
   return (
       <FullCalendar
         plugins={[timeGridPlugin, dayGridPlugin, interactionPlugin, listPlugin, bootstrap5Plugin]}
         initialView="dayGridMonth"
         themeSystem="standard"
-        height={800}
+        height={1100}
         headerToolbar={{
-          left: 'dayGridMonth,timeGridWeek,timeGridDay',
+          left: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth',
           center: 'title',
           right: 'prevYear,prev,next,nextYear'
         }}
         footerToolbar={{
-          left: 'listDay,listWeek,listMonth',
-          center: 'custom1,custom2',
+          left: '',
+          center: '',
           right: 'prev,next'
         }}
-        customButtons={{
-          custom1: {
-            text: 'custom 1',
-            click: function() {
-              alert('clicked custom button 1!');
-            }
-          },
-          custom2: {
-            text: 'custom 2',
-            click: function() {
-              alert('clicked custom button 2!');
-            }
-          }
-        }}
-        editable
-        selectable
+        initialEvents={[
+          { title: 'nice event', start: new Date() }
+        ]}
+        events={events}
+        select={handleClickDay}
+        editable={true}
+        eventStartEditable={true}
+        selectable={true}
+        eventLimit={true}
+        selectHelper={true}
       />
   );
 };
