@@ -22,7 +22,7 @@ const Nav = ({ expand, setExpand }: any) => (
         <FaCode className="inline" /><Link href='/projects'>Projects</Link>
       </li>
       <li className="flex justify-start items-center gap-2 pl-8">
-        <FaUserFriends className="inline" /><Link href='/groups'>Groups</Link>
+        <FaUserFriends className="inline" /><Link href='/groups/overview'>Groups</Link>
       </li>
       <li className="flex justify-start items-center gap-2 pl-8">
         <FaRegCalendarAlt className="inline" /><Link href='/calendar'>Calendar</Link>
