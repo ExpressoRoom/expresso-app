@@ -1,9 +1,9 @@
 import Nav from './Nav';
-import { useState } from 'react';
+import { useState, Dispatch, SetStateAction } from 'react';
 
 const Layout = ({ children }: any) => {
 
-  const [expand, setExpand]:[boolean, any] = useState(true);
+  const [expand, setExpand] : [boolean, Dispatch<SetStateAction<boolean>>]= useState(true);
 
   return (
     <div>
