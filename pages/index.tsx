@@ -1,10 +1,12 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-
 import io from 'socket.io-client';
 
-const socket = io('localhost:8000');
+export const socket = io('localhost:8000', {
+  autoConnect: false
+});
+
 
 export default function Home() {
   return (
