@@ -78,18 +78,18 @@ useEffect(() => {
         <img src="/Default_pfp.svg.png" alt="could not display image" className="h-12 w-12"/>
         <div className="text-sm">Other users</div>
       </div>
-      <div className="border-t border-t-zinc-800 flex flex-col items-start justify-end text-base h-3/4 overflow-y-auto">
+      <div className="border-t border-t-zinc-800 flex flex-col items-start justify-end text-base h-3/4 overflow-auto">
         {
           messageList.map((message: Messages, index: number): ReactNode =>
             message.username === username
-            ? <div key={index} className="flex flex-row items-start justify-left w-5/6 mt-10 ml-10">
+            ? <div key={index} className="flex flex-row items-start justify-left w-full mt-10 pl-10 hover:bg-zinc-600">
                 <img src="/Default_pfp.svg.png" alt="could not display image" className="h-12 w-12"/>
                 <div className="w-5/6 ml-5 flex flex-col">
                   <div>{message.username}</div>
                   <p className="break-words">{message.text}</p>
                 </div>
               </div>
-            : <div key={index} className="flex flex-row items-center justify-left w-5/6">
+            : <div key={index} className="flex flex-row items-start justify-left w-5/6 mt-10 ml-10 hover:bg-zinc-800">
                 <img src="/Default_pfp.svg.png" alt="could not display image" className="h-12 w-12"/>
                 <div className="ml-5">{message.text}</div>
               </div>
