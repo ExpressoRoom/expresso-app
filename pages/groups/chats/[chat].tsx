@@ -1,5 +1,5 @@
 import React, { useState, useEffect, ReactNode } from "react";
-import io from "socket.io-client";
+import { FaPaperPlane, FaPaperclip, FaSmile } from "react-icons/fa";
 import { Messages, Reactions, User } from "../../../utilities/interfaces";
 import { messages, rooms } from "../../../utilities/strings/socket";
 import socket from "../../../utilities/socket";
@@ -74,22 +74,35 @@ useEffect(() => {
 
   return (
     <div className="bg-zinc-700 flex-col items-around justify-center text-3xl ml-1/6 h-screen">
-      <div className="shadow-black flex flex-row text-l items-center justify-center h-20">
-        <div>Mutual activites</div>
-        <div>Users list</div>
+      <div className="flex flex-col text-l items-center justify-center h-20">
+        <img src="/Default_pfp.svg.png" alt="could not display image" className="h-12 w-12"/>
+        <div className="text-sm">Other users</div>
       </div>
-      <div className="border-t border-t-zinc-800 flex flex-col text-base h-3/4 overflow-y-scroll">
+      <div className="border-t border-t-zinc-800 flex flex-col items-start justify-end text-base h-3/4 overflow-y-auto">
         {
           messageList.map((message: Messages, index: number): ReactNode =>
             message.username === username
-            ? <div key={index} className="border-2 border-purple-600 rounded-xl w-1/4 m-5 p-3 whitespace-normal text-ellipsis">{message.text}</div>
-            : <div key={index} className="border-2 border-red-600 rounded-xl w-1/4 m-5 p-3 whitespace-normal text-ellipsis">{message.text}</div>
+            ? <div key={index} className="flex flex-row items-start justify-left w-5/6 mt-10 ml-10">
+                <img src="/Default_pfp.svg.png" alt="could not display image" className="h-12 w-12"/>
+                <div className="w-5/6 ml-5 flex flex-col">
+                  <div>{message.username}</div>
+                  <p className="break-words">{message.text}</p>
+                </div>
+              </div>
+            : <div key={index} className="flex flex-row items-center justify-left w-5/6">
+                <img src="/Default_pfp.svg.png" alt="could not display image" className="h-12 w-12"/>
+                <div className="ml-5">{message.text}</div>
+              </div>
           )
         }
       </div>
       <div className="my-7 mx-10 h-10 bg-zinc-600 rounded-xl text-base flex flex-row items-center justify-around h-1/6">
-        <input type="text" onChange={(e) => {handleInput(e)}} className="bg-zinc-600 w-2/3" placeholder="Type a message..."></input>
-        <button className="bg-green-700 rounded-xl w-1/6" onClick={() => {onMessage(input)}}>Send</button>
+        <input type="text" onChange={(e) => {handleInput(e)}} className="bg-zinc-600 w-3/4" placeholder="Type a message..."></input>
+        <div className="flex flex-row items-center justify-around w-1/6 h-10 overflow-y-nowrap">
+            <FaPaperPlane className="ease-in-out duration-200 hover:text-xl cursor-pointer" onClick={() => {onMessage(input)}}/>
+            <FaPaperclip className="ease-in-out duration-200 hover:text-xl cursor-pointer"/>
+            <FaSmile className="ease-in-out duration-200 hover:text-xl cursor-pointer" />
+        </div>
       </div>
     </div>
   )
